@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sistema de Gestión</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="loginModalBackdrop" class="modal-backdrop"></div>
+    <div id="editModalBackdrop" class="modal-backdrop"></div>
+    <div id="loginModal" class="modal">
+        <h2>Ingrese Contraseña</h2>
+        <input type="password" id="apiKeyInput">
+        <button onclick="submitApiKey()" class="btn btn-primary">Ingresar</button>
+    </div>
+
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loader"></div>
+    </div>
+
+    <div class="topbar">
+        <h1>Sistema de Gestión</h1>
+        <div>
+            <button onclick="showLoginModal()" class="btn">Cambiar Contraseña</button>
+            <button onclick="fetchData()" class="btn">Recargar Datos</button>
+        </div>
+    </div>
+
+    <div class="search-section">
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Buscar por nombre...">
+            <select id="sortBy">
+                <option value="date">Ordenar por Fecha</option>
+                <option value="priority">Ordenar por Prioridad</option>
+            </select>
+            <button onclick="addNewPerson()" class="btn btn-primary">Agregar Persona</button>
+        </div>
+    </div>
+
+    <div class="data-table">
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>RUT</th>
+                    <th>Pendientes</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </div>
+
+    <div id="editModal" class="modal">
+        <!-- dynamically populated -->
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
