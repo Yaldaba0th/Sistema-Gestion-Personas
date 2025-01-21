@@ -171,3 +171,76 @@ th {
     gap: 0.5rem;
     justify-content: flex-end;
 }
+
+.info-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.main-info {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.sub-info {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.phone-icon {
+    margin-right: 0.25rem;
+}
+
+.observaciones {
+    max-width: 300px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.personal-info-cell,
+.age-info-cell {
+    flex-direction: column;
+    gap: 0.25rem;
+    min-width: 200px;
+    /* Adjust as needed */
+}
+
+.pendientes-cell {
+    min-width: 250px;
+    /* Adjust as needed */
+}
+
+.observaciones-cell {
+    min-width: 200px;
+    /* Adjust as needed */
+    max-width: 300px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.actions-cell {
+    white-space: nowrap;
+    min-width: 150px;
+    /* Adjust as needed */
+}
+
+/* Ensure table cells don't collapse */
+td {
+    border-bottom: 1px solid #ddd;
+    padding: 1rem;
+    vertical-align: top;
+}
+
+/* Make table wrapper scrollable horizontally if needed */
+.data-table {
+    overflow-x: auto;
+}
+
+.actions-cell {
+    white-space: nowrap;
+    min-width: 100px;  /* Reduced from 150px since we're stacking vertically */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;  /* Space between buttons */
+}

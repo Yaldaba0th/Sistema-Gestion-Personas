@@ -4,6 +4,7 @@
 <head>
     <title>Sistema de Gestión</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body>
@@ -33,6 +34,7 @@
             <select id="sortBy">
                 <option value="date">Ordenar por Fecha</option>
                 <option value="priority">Ordenar por Prioridad</option>
+                <option value="age">Ordenar por Edad</option>
             </select>
             <button onclick="addNewPerson()" class="btn btn-primary">Agregar Persona</button>
         </div>
@@ -42,8 +44,9 @@
         <table id="dataTable">
             <thead>
                 <tr>
-                    <th>Nombre</th>
-                    <th>RUT</th>
+                    <th>Información Personal</th>
+                    <th>Edad y Nacimiento</th>
+                    <th>Observaciones</th>
                     <th>Pendientes</th>
                     <th>Acciones</th>
                 </tr>
