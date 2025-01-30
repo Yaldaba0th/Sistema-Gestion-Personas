@@ -119,9 +119,10 @@ function displayData() {
 
     const searchTerm = document.getElementById('searchInput').value.toLowerCase();
     if (searchTerm) {
+        console.log(displayData);
         displayData = displayData.filter(row =>
             row[1].toLowerCase().includes(searchTerm) || // Filter by name
-            row[2].toLowerCase().includes(searchTerm)    // Filter by RUT
+            row[2].toString().toLowerCase().includes(searchTerm)    // Filter by RUT
         );
     }
 
