@@ -271,10 +271,11 @@ async function saveNewPerson() {
         closeModal();
         fetchData();
     } catch (error) {
+        hideLoading();
         console.error('Error:', error);
         alert('Error al guardar');
     } finally {
-        hideLoading();
+        // hideLoading();
     }
 }
 
@@ -339,10 +340,11 @@ async function saveEdit(id) {
         closeModal();
         fetchData();
     } catch (error) {
+        hideLoading();
         console.error('Error:', error);
         alert('Error al actualizar');
     } finally {
-        hideLoading();
+        // hideLoading();
     }
 }
 
@@ -365,10 +367,11 @@ async function deletePerson(id) {
 
         fetchData();
     } catch (error) {
+        hideLoading();
         console.error('Error:', error);
         alert('Error al eliminar');
     } finally {
-        hideLoading();
+        // hideLoading();
     }
 }
 
@@ -382,17 +385,17 @@ document.getElementById('sortBy').addEventListener('change', displayData);
 document.getElementById('groupBy').addEventListener('change', fetchData);
 
 // Backdrop click handlers
-document.getElementById('loginModalBackdrop').addEventListener('click', (e) => {
-    if (e.target === e.currentTarget) {
-        closeLoginModal();
-    }
-});
+// document.getElementById('loginModalBackdrop').addEventListener('click', (e) => {
+//     if (e.target === e.currentTarget) {
+//         closeLoginModal();
+//     }
+// });
 
-document.getElementById('editModalBackdrop').addEventListener('click', (e) => {
-    if (e.target === e.currentTarget) {
-        closeModal();
-    }
-});
+// document.getElementById('editModalBackdrop').addEventListener('click', (e) => {
+//     if (e.target === e.currentTarget) {
+//         closeModal();
+//     }
+// });
 
 // Initial load
 document.addEventListener('DOMContentLoaded', () => {
