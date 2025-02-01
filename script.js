@@ -41,7 +41,9 @@ function submitApiKey() {
 async function getConfig() {
     try {
         const response = await fetch('config.json');
-        return await response.json();
+        const configjson = await response.json();
+        const groupBy = document.getElementById('groupBy').value;
+        return configjson[groupBy];
     } catch (error) {
         console.error('Error loading config:', error);
         throw error;
@@ -58,7 +60,7 @@ async function fetchData() {
     try {
         const config = await getConfig();
         const response = await fetch(
-            `${config.API_URL}?key=${apiKey}&action=read`
+            `${config}?key=${apiKey}&action=read`
         );
         const result = await response.json();
 
@@ -126,24 +128,6 @@ function displayData() {
         );
     }
 
-    // Apply sorting
-    // const sortBy = document.getElementById('sortBy').value;
-    // if (sortBy === 'date' || sortBy === 'priority') {
-    //     displayData.sort((a, b) => {
-    //         const pendientesA = JSON.parse(a[5] || '[]');
-    //         const pendientesB = JSON.parse(b[5] || '[]');
-
-    //         if (sortBy === 'date') {
-    //             const dateA = pendientesA.length ? new Date(pendientesA[0].date) : new Date(0);
-    //             const dateB = pendientesB.length ? new Date(pendientesB[0].date) : new Date(0);
-    //             return dateA - dateB;
-    //         } else {
-    //             const priorityA = Math.max(...pendientesA.map(p => p.priority), 0);
-    //             const priorityB = Math.max(...pendientesB.map(p => p.priority), 0);
-    //             return priorityB - priorityA;
-    //         }
-    //     });
-    // }
     const sortBy = document.getElementById('sortBy').value;
     if (sortBy === 'date' || sortBy === 'priority' || sortBy === 'age') {
         displayData.sort((a, b) => {
@@ -273,7 +257,7 @@ async function saveNewPerson() {
     showLoading();
     try {
         const config = await getConfig();
-        const response = await fetch(`${config.API_URL}?key=${apiKey}`, {
+        const response = await fetch(`${config}?key=${apiKey}`, {
             method: 'POST',
             body: JSON.stringify({
                 action: 'create',
@@ -340,7 +324,7 @@ async function saveEdit(id) {
     showLoading();
     try {
         const config = await getConfig();
-        const response = await fetch(`${config.API_URL}?key=${apiKey}`, {
+        const response = await fetch(`${config}?key=${apiKey}`, {
             method: 'POST',
             body: JSON.stringify({
                 action: 'update',
@@ -368,7 +352,7 @@ async function deletePerson(id) {
     showLoading();
     try {
         const config = await getConfig();
-        const response = await fetch(`${config.API_URL}?key=${apiKey}`, {
+        const response = await fetch(`${config}?key=${apiKey}`, {
             method: 'POST',
             body: JSON.stringify({
                 action: 'delete',
@@ -395,6 +379,7 @@ function closeModal() {
 // Event listeners
 document.getElementById('searchInput').addEventListener('input', displayData);
 document.getElementById('sortBy').addEventListener('change', displayData);
+document.getElementById('groupBy').addEventListener('change', fetchData);
 
 // Backdrop click handlers
 document.getElementById('loginModalBackdrop').addEventListener('click', (e) => {
